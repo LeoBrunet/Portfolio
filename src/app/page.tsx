@@ -1,103 +1,103 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import { Header } from './components/Header';
+import { ProjectGrid } from './components/ProjectGrid';
+import { projects } from '../data/projects';
+import { Project } from '../types/project';
+import { theme } from '../types/theme';
+import { educationData } from '../types/education';
+import { experiences } from '../data/experiences';
+
+import { EducationCard } from './components/education/EducationCard';
+import { EducationTimeline } from './components/education/EducationTimeline';
+import { EducationMinimal } from './components/education/EducationMinimal';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { ExperienceGrid } from './components/experience/ExperienceGrid';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { language, t } = useLanguage();
+  const getLocalizedContent = <T extends string | string[]>(content: { en: T; fr: T }): T => {
+    return content[language as keyof typeof content];
+  };
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const [selectedCategory, setSelectedCategory] = useState<Project['category'] | undefined>(undefined);
+  const categories: Project['category'][] = ['web', 'mobile', 'other'];
+
+  const renderEducation = () => {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {educationData.map((education) => (
+          <EducationCard
+            key={education.id}
+            education={education}
+            theme={theme}
+          />
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <main className={`min-h-screen ${theme.colors.background} ${theme.colors.text}`}>
+      <Header theme={theme} />
+      
+      {/* Spacer for fixed header */}
+      <div className="h-76"></div>
+      
+      <div className="container mx-auto px-4 py-12 space-y-32 relative">
+        {/* Background decorations */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/3 left-1/4 w-64 h-64 rounded-full bg-blue-500/5 blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/3 w-96 h-96 rounded-full bg-purple-500/5 blur-3xl" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <section>
+          <h2 className={`
+            text-2xl font-bold mb-8
+            ${theme.fonts.heading}
+          `}>
+            {t('sections.experience')}
+          </h2>
+          <ExperienceGrid experiences={experiences} theme={theme} />
+        </section>
+        
+        <section>
+          <h2 className={`
+            text-2xl font-bold mb-8
+            ${theme.fonts.heading}
+          `}>
+            {t('sections.education')}
+          </h2>
+          {renderEducation()}
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-bold mb-8">{language === 'fr' ? 'Projets' : 'Projects'}</h2>
+          <div className="flex justify-center gap-4 mb-8">
+            <button
+              onClick={() => setSelectedCategory(undefined)}
+              className={`px-4 py-2 rounded-full ${!selectedCategory ? theme.colors.primary + ' text-white' : 'bg-gray-200 text-gray-700'}`}
+            >
+              {language === 'fr' ? 'Tous' : 'All'}
+            </button>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full ${selectedCategory === category ? theme.colors.primary + ' text-white' : 'bg-gray-200 text-gray-700'}`}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
+          </div>
+
+          <ProjectGrid projects={projects} category={selectedCategory} theme={theme} />
+        </section>
+      </div>
+
+      <LanguageSwitcher />
+    </main>
   );
 }

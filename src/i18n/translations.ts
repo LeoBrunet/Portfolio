@@ -1,0 +1,76 @@
+export type Language = 'en' | 'fr';
+
+export const translations = {
+  en: {
+    header: {
+      title: 'Full Stack Developer',
+      subtitle: 'Building modern web and mobile applications',
+    },
+    sections: {
+      experience: 'Experience',
+      education: 'Education',
+      projects: 'Projects',
+    },
+    categories: {
+      web: 'Web',
+      mobile: 'Mobile',
+      other: 'Other',
+    },
+    skills: {
+      english: 'English',
+      scrum: 'Scrum',
+      android: 'Android Development',
+      ios: 'iOS Development',
+      kotlin: 'Kotlin',
+      swift: 'Swift',
+      security: 'Cybersecurity',
+      management: 'Management',
+      software: 'Software Development',
+      programming: 'Programming',
+      design: 'Software Design',
+      project: 'Project Management',
+      crypto: 'Cryptography',
+      networks: 'Computer Networks',
+      testing: 'Testing',
+      agile: 'Agile Methods',
+      communication: 'Communication',
+      databases: 'Database Development',
+    },
+  },
+  fr: {
+    header: {
+      title: 'Développeur Full Stack',
+      subtitle: 'Créateur d\'applications web et mobiles modernes',
+    },
+    sections: {
+      experience: 'Expérience',
+      education: 'Formation',
+      projects: 'Projets',
+    },
+    categories: {
+      web: 'Web',
+      mobile: 'Mobile',
+      other: 'Autre',
+    },
+    skills: {
+      english: 'Anglais',
+      scrum: 'Scrum',
+      android: 'Développement Android',
+      ios: 'Développement iOS',
+      kotlin: 'Kotlin',
+      swift: 'Swift',
+      security: 'Cybersécurité',
+      management: 'Management',
+      software: 'Développement de logiciels',
+      programming: 'Programmation',
+      design: 'Conception de logiciels',
+      project: 'Gestion de projet',
+      crypto: 'Cryptographie',
+      networks: 'Réseaux informatiques',
+      testing: 'Tests',
+      agile: 'Méthodes agiles',
+      communication: 'Communication',
+      databases: 'Développement de bases de données',
+    },
+  },
+};
