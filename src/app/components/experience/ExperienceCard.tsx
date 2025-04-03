@@ -54,17 +54,16 @@ export const ExperienceCard = ({ experience, theme }: ExperienceCardProps) => {
         cursor-pointer select-none
         ${getThemeClasses()}
       `}
+      id={experience.id}
     >
-      <div 
-      className={`p-6 ${theme.spacing.element}`}
-      onClick={() => experience.url && window.open(experience.url, '_blank')}
-      >
+      <div className={`p-6 ${theme.spacing.element}`}>
         {/* Company header */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4" onClick={() => experience.url && window.open(experience.url, '_blank')}>
           <div className={`
             relative w-16 h-16 rounded-lg overflow-hidden
             ${theme.colors.surface} p-2
-          `}>
+          `}
+          >
             <Image
               src={experience.logoUrl}
               alt={getLocalizedContent(experience.company)}

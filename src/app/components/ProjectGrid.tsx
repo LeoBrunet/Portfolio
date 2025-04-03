@@ -10,7 +10,7 @@ interface ProjectGridProps {
 
 export const ProjectGrid = ({ projects, category, theme }: ProjectGridProps) => {
   const filteredProjects = category
-    ? projects.filter((project) => project.category === category)
+    ? projects.filter((project) => project.category.some((cat) => category.includes(cat)))
     : projects;
 
   return (

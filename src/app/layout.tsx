@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
       >
         <LanguageProvider>
-          {children}
+            {children}
         </LanguageProvider>
       </body>
     </html>

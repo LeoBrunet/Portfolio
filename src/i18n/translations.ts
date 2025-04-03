@@ -3,13 +3,15 @@ export type Language = 'en' | 'fr';
 export const translations = {
   en: {
     header: {
-      title: 'Full Stack Developer',
-      subtitle: 'Building modern web and mobile applications',
+      title: 'Léo Brunet',
+      subtitle: 'Full Stack Developer',
+      downloadCV: 'Download CV',
     },
     sections: {
       experience: 'Experience',
       education: 'Education',
       projects: 'Projects',
+      worldMap: 'My Journey Around the World',
     },
     categories: {
       web: 'Web',
@@ -36,16 +38,23 @@ export const translations = {
       communication: 'Communication',
       databases: 'Database Development',
     },
+    worldMap: {
+      work: 'Work',
+      education: 'Education',
+      travel: 'Travel',
+    },
   },
   fr: {
     header: {
-      title: 'Développeur Full Stack',
-      subtitle: 'Créateur d\'applications web et mobiles modernes',
+      title: 'Léo Brunet',
+      subtitle: 'Développeur Full Stack',
+      downloadCV: 'Télécharger CV',
     },
     sections: {
       experience: 'Expérience',
       education: 'Formation',
       projects: 'Projets',
+      worldMap: 'Mon Parcours à Travers le Monde',
     },
     categories: {
       web: 'Web',
@@ -71,6 +80,11 @@ export const translations = {
       agile: 'Méthodes agiles',
       communication: 'Communication',
       databases: 'Développement de bases de données',
+    },
+    worldMap: {
+      work: 'Travail',
+      education: 'Formation',
+      travel: 'Voyage',
     },
   },
 };

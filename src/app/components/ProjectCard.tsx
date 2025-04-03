@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Project } from '../../types/project';
 import { useState } from 'react';
 import { Theme } from '../../types/theme';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 interface ProjectCardProps {
   project: Project;
@@ -10,6 +11,7 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, theme }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { language } = useLanguage();
 
   const getThemeClasses = () => {
     if (!theme) return 'bg-white';
@@ -60,7 +62,7 @@ const ProjectCard = ({ project, theme }: ProjectCardProps) => {
           opacity-75
           mb-6
         `}>
-          {project.description}
+          {project.description[language as keyof typeof project.description]}
         </p>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
